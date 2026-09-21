@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An offline, source-faithful interactive tutor for the DAWN-Sim repository.">
+  <title>DAWN-Sim Interactive Tutor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#code-lines">Skip to source code</a>
+  <header class="topbar">
+    <div class="brand"><span class="signal-mark" aria-hidden="true">⌁</span><div><strong>DAWN-Sim</strong><span>Interactive tutor</span></div></div>
+    <div class="top-actions">
+      <label class="search"><span class="sr-only">Search code and concepts</span><input id="search" type="search" placeholder="Search: send, timer, broadcast…" autocomplete="off"></label>
+      <button class="icon-button" id="continue-btn" type="button" title="Continue learning">↺ <span>Continue</span></button>
+      <button class="icon-button" id="theme-btn" type="button" title="Toggle light and dark theme">◐ <span>Theme</span></button>
+      <button class="icon-button" id="help-btn" type="button" title="Keyboard shortcuts">? <span>Keys</span></button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <aside class="navigator" aria-label="Repository file navigator">
+      <div class="nav-head"><div><p class="eyebrow">Repository map</p><h1>Learn in dependency order</h1></div><output id="overall-progress" aria-label="Overall progress">0%</output></div>
+      <div class="progress-track" aria-hidden="true"><i id="overall-progress-bar"></i></div>
+      <nav id="file-nav" class="file-nav"></nav>
+      <section class="navigator-note"><p class="eyebrow">Source fidelity</p><p>The viewer loads the checked-in text verbatim. Notes belong to the tutor, never to the source.</p></section>
+    </aside>
+
+    <section class="code-panel" aria-label="Code viewer">
+      <div class="code-toolbar">
+        <div><p class="eyebrow" id="file-category">Core infrastructure</p><h2 id="file-title">source/config.py</h2></div>
+        <div class="toolbar-right"><span id="line-count">0 lines</span><button id="complete-file" type="button">Mark file studied</button></div>
+      </div>
+      <div class="symbol-strip" id="symbol-strip" aria-label="Symbols in this file"></div>
+      <div class="code-scroller" id="code-lines" tabindex="0" aria-label="Clickable source code lines"></div>
+    </section>
+
+    <aside class="explanation" aria-live="polite" aria-label="Line explanation">
+      <div class="explanation-head"><p class="eyebrow" id="line-kicker">Select a line</p><h2 id="line-title">Read the source</h2><span id="line-tags" class="line-tags"></span></div>
+      <div class="explanation-tabs" role="tablist" aria-label="Explanation depth"><button class="active" data-level="beginner" role="tab" aria-selected="true">Beginner</button><button data-level="intermediate" role="tab" aria-selected="false">Intermediate</button><button data-level="advanced" role="tab" aria-selected="false">Advanced</button></div>
+      <article id="explanation-content" class="explanation-content"><p>Click a meaningful source line. The tutor will explain its Python syntax, DAWN-Sim purpose, state changes, lifecycle position, connections, and trade-offs.</p></article>
+      <section class="related"><h3>Related source</h3><div id="related-lines"></div></section>
+    </aside>
+  </main>
+
+  <section class="lab" aria-label="Interactive learning lab">
+    <div class="lab-tabs" role="tablist" aria-label="Learning laboratory">
+      <button class="active" data-lab="runtime" role="tab" aria-selected="true">Runtime map</button><button data-lab="packet" role="tab" aria-selected="false">Packet delivery</button><button data-lab="neighbors" role="tab" aria-selected="false">Neighbors &amp; movement</button><button data-lab="timer" role="tab" aria-selected="false">Timers &amp; generators</button><button data-lab="visual" role="tab" aria-selected="false">Visualization architecture</button><button data-lab="examples" role="tab" aria-selected="false">Algorithms</button><button data-lab="quality" role="tab" aria-selected="false">Code quality</button><button data-lab="quiz" role="tab" aria-selected="false">Check understanding</button>
+    </div>
+    <div id="lab-content"></div>
+  </section>
+
+  <dialog id="help-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close keyboard shortcuts">×</button><p class="eyebrow">Keyboard navigation</p><h2>Move through the repository</h2><dl><dt>↑ / ↓</dt><dd>Previous / next source line</dd><dt>J / K</dt><dd>Next / previous explanation</dd><dt>F</dt><dd>Focus search</dd><dt>N / P</dt><dd>Next / previous file</dd><dt>?</dt><dd>Toggle this reference</dd></dl></form></dialog>
+  <script src="repository-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
